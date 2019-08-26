@@ -9,13 +9,17 @@ By hooking, I mean essentially proxying its calls, that is, to intercept any cal
 I generally name the function that intercepts the call, _handler_.
 
 ## How does it work?
-Stay tuned for my [Twitter](https://twitter.com/home) and [Blog](https://l3nsec.blog/) as I will explain in detail how hooking works, what calling conventions look like, what is a detour and the logic behind this library.
+There's an amazing tutorial at the awesome channel [GuidedHacking](https://www.youtube.com/watch?v=jTl3MFVKSUM), it's fairly short when accounting for the huge knowledge bomb it has.
+
+Although most of the logic is the same, rather than relying on the developer knowing how many bytes to rewrite and restore, I simply use the disassembler Capstone.
+
+Stay tuned for my [Twitter](https://twitter.com/home) and [Blog](https://l3nsec.blog/) as I will (soon) explain how to write different _handlers_ for each of the calling conventions, as well as provide an explanation on how to compile and integrate this in your project.
 
 ## Architectures
 The target architecture of this library is Windows x86/x64, currently only developed for x86.
 However it should work for Linux aswell(untested).
 
-## Current Tested
+## Currently Tested
 x86 Detour Hook with Trampoline(JMP Relative) calling conventions:
 - cdecl ✔️
 - stdcall ✔️
