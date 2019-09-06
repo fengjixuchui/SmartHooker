@@ -15,6 +15,12 @@ Although most of the logic is the same, rather than relying on the developer kno
 
 Stay tuned for my [Twitter](https://twitter.com/home) and [Blog](https://l3nsec.blog/) as I will (soon) explain how to write different _handlers_ for each of the calling conventions, as well as provide an explanation on how to compile and integrate this in your project.
 
+## How to include/use this?
+
+Download [Capstone's Libs](https://github.com/aquynh/capstone/releases) and this Library's .lib into your "Library Directories" inside VC++ Directories.
+
+Also download the include files(.h) of both projects in your "Include Directories".
+
 ## Architectures
 The target architecture of this library is Windows x86/x64, currently only developed for x86.
 However it should work for Linux aswell(untested).
