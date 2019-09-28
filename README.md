@@ -23,7 +23,8 @@ Also download the include files(.h) of both projects in your "Include Directorie
 
 ## Architectures
 The target architecture of this library is Windows x86/x64, currently only developed for x86.
-However it should work for Linux aswell(untested).
+
+However it should work for Linux as well(untested).
 
 ## Currently Tested
 x86 Detour Hook with Trampoline(JMP Relative) calling conventions:
