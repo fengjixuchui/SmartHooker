@@ -1,65 +1,9 @@
 #include "Hooker.h"
-#include "ExampleClass.h"
-
-// Defining the types of the functions to hook
-typedef int(__cdecl* hooked_t)(int, unsigned char, short);
-typedef int(__stdcall* MessageBox_t)(HWND, LPCSTR, LPCSTR, UINT);
-typedef double(__thiscall* GetSalary_t)(double);
-typedef bool(__fastcall* IsKeyPressed_t)(UCHAR);
-
-// Declaring those types for the address of the original functions
-hooked_t hooked_o;
-MessageBox_t MessageBox_o;
-GetSalary_t GetSalary_o;
-IsKeyPressed_t IsKeyPressed_o;
-
-/**
- * This will print the args if the a1 is < 500 otherwise will just call the original
- */
-int __cdecl victim_handler(int a1, unsigned char b1, short c1)
-{
-	return (a1 < 500) ? printf("%i %i %hi\n", a1, (int)b1, c1) : hooked_o(a1, b1, c1);
-}
-
-int __cdecl victim_method(int a1, unsigned char b1, short c1)
-{
-	a1 += 20;
-
-	b1 -= 20;
-
-	c1 += 666;
-
-	return printf("%i %i %hi\n", a1, (int)b1, c1);
-}
-
-int WINAPI MessageBoxHandler(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType)
-{
-	return MessageBox_o(0, "This is not safe!", lpCaption, 0);
-}
-
-bool __fastcall IsKeyPressed(UCHAR vk)
-{
-	return GetAsyncKeyState(vk);
-}
-
-bool __fastcall IsKeyPressedHandler(UCHAR vk)
-{
-	if (vk == VK_END) return 1;
-
-	return IsKeyPressed_o(vk);
-}
-
-// We're handling thiscall as stdcall by getting the this pointer with inline assembly
-double __stdcall GetSalaryHandler(double money)
-{
-	ExampleClass* example;
-
-	__asm {
-		mov dword ptr[example], ecx;
-	}
-
-	return example->GetMoney() + (GetSalary_o(money) * 5);
-}
+#include "Example_cdecl.h"
+#include "Example_stdcall.h"
+#include "Example_fastcall.h"
+#include "ExampleClass_thiscall.h"
+#include "Example_thiscall.h"
 
 int main()
 {
