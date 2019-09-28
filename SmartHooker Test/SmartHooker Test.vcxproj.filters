@@ -18,12 +18,24 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExampleClass.cpp">
+    <ClCompile Include="ExampleClass_thiscall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ExampleClass.h">
+    <ClInclude Include="Example_cdecl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_stdcall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_fastcall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleClass_thiscall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_thiscall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
